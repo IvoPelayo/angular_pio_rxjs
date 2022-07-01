@@ -1,0 +1,44 @@
+{
+  "name": "rxjs-app",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~9.1.6",
+    "@angular/cdk": "^9.2.3",
+    "@angular/common": "~9.1.6",
+    "@angular/compiler": "~9.1.6",
+    "@angular/core": "~9.1.6",
+    "@angular/flex-layout": "^9.0.0-beta.29",
+    "@angular/forms": "~9.1.6",
+    "@angular/material": "^9.2.3",
+    "@angular/material-moment-adapter": "^9.2.3",
+    "@angular/platform-browser": "~9.1.6",
+    "@angular/platform-browser-dynamic": "~9.1.6",
+    "@angular/router": "~9.1.6",
+    "lodash": "^4.17.21",
+    "moment": "2.24.0",
+    "ngx-moment": "3.5.0",
+    "rxjs": "~6.5.5",
+    "subsink": "^1.0.2",
+    "tslib": "^1.12.0",
+    "zone.js": "~0.10.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.901.5",
+    "@angular/cli": "~9.1.5",
+    "@angular/compiler-cli": "~9.1.6",
+    "@angular/language-service": "~9.1.6",
+    "@types/node": "^12.11.1",
+    "ts-node": "~7.0.0",
+    "tslint": "~5.15.0",
+    "typescript": "^3.7.2"
+  }
+}
