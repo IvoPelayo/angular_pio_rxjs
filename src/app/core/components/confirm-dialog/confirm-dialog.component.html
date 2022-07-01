@@ -1,0 +1,16 @@
+<div mat-dialog-title no-margin>
+  <div fxLayout="row" class="header-row">
+      <h3 no-margin modal-title>{{ data.title? data.title : data.message }}</h3>
+  </div>
+</div>
+<mat-dialog-content no-margin no-padding *ngIf="data.title">
+  <div fxLayout="row" class="message">
+    <p [innerHTML]="data.message" no-margin></p>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="15px">
+  <button mat-stroked-button (click)="onDecline()" fxFlex
+    color="secondary">{{ data.declineButtonText }}</button>
+  <button mat-flat-button (click)="onAccept()" fxFlex
+    color="primary">{{ data.acceptButtonText }}</button>
+</mat-dialog-actions>

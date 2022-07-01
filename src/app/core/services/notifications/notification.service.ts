@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialogComponent, ConfirmDialogResponse } from './components/confirm-dialog/confirm-dialog.component';
-import { NotificationType } from './notificationType';
+import { ConfirmDialogComponent, ConfirmDialogResponse } from '../../components/confirm-dialog/confirm-dialog.component';
+import { NotificationType } from '../../enums/notificationType';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ConfirmOptions, IConfirmOptions } from './confirmOptions';
+import { ConfirmOptions, IConfirmOptions } from '../../models/confirmOptions';
 
 @Injectable({ providedIn: 'root' })
 export class NotificationService {

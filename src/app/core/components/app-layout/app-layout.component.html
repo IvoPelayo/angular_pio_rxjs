@@ -1,0 +1,18 @@
+
+<mat-sidenav-container id="container" fullscreen>
+    <mat-sidenav mode="side" opened style="padding:15px">
+        <h2>Contenidos</h2>
+        <mat-divider></mat-divider>
+        <mat-list role="list">
+            <ng-container *ngFor="let item of navItems">
+                <mat-list-item role="listitem" (click)="itemClicked(item)">{{ item.name }}</mat-list-item>
+                <mat-list *ngIf="item.children && item.expanded">
+                    <mat-list-item role="listitem" *ngFor="let children of item.children" (click)="itemClicked(item)">{{ children.name }}</mat-list-item>
+                </mat-list>
+            </ng-container>
+        </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content style="padding:15px">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

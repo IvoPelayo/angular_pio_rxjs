@@ -1,14 +1,12 @@
-import { HttpService } from '@core/services/http-client/http.service';
-import { Injectable } from '@angular/core';
-import { ISearchCriteria, SearchResult } from '@shared/models/search';
 import { Observable } from 'rxjs';
-import { HttpMethods } from '@core/enums/http-methods';
 import { map } from 'rxjs/operators';
+import { HttpMethods } from 'src/app/core/enums/http-methods';
+import { HttpService } from 'src/app/core/services/http-client/http.service';
+import { ISearchCriteria, SearchResult } from '../../models/search';
 
 /** Parent class for services that are dependant to CrewService
  * At the moment only prefetchs the crew data to avoid downtimes
  */
-@Injectable()
 export class SearchService<T>{
   private _searchUrl: string;
 

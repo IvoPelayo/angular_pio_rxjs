@@ -1,4 +1,4 @@
-import { Constructable } from "@core/models/constructable";
+import { Constructable } from "./constructable";
 
 export interface IConfirmOptions {
     message: string;

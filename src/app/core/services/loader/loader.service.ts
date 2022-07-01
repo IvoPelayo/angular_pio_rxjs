@@ -3,7 +3,7 @@ import { Overlay } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { Subject } from 'rxjs';
 import { scan, map } from 'rxjs/operators';
-import { LoadingOverlayComponent } from './components/loading-overlay/loading.component';
+import { LoadingOverlayComponent } from '../../components/loading-overlay/loading.component';
 
 @Injectable({ providedIn: 'root' })
 export class LoaderService {

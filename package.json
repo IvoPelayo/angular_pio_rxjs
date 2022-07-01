@@ -36,6 +36,7 @@
     "@angular/cli": "~9.1.5",
     "@angular/compiler-cli": "~9.1.6",
     "@angular/language-service": "~9.1.6",
+    "@types/lodash": "^4.14.182",
     "@types/node": "^12.11.1",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
