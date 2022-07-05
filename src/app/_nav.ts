@@ -17,15 +17,28 @@ export const navItems: NavData[] = [
         children: [
             {
                 name: 'Más utilizados',
-                url: 'pipes'
+                url: 'pipes/most-used'
             },
             {
                 name: 'Combinar',
-                url: 'pipes/combine'
+                url: 'pipes/stack'
             },
             {
                 name: 'Custom',
                 url: 'pipes/custom'
+            }
+        ]
+    },
+    {
+        name: 'Usos complejos',
+        children: [
+            {
+                name: 'Herramientas reutilizables',
+                url: 'complex/core-tools'
+            },
+            {
+                name: 'Flujos',
+                url: 'complex/flow'
             }
         ]
     },
