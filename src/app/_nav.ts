@@ -8,7 +8,7 @@ export const navItems: NavData[] = [
         },
         {
             name: 'Suscriptor (listener)',
-            url: 'basic/subscriber'
+            url: 'basic/subscriptor'
         }
       ]
     },
@@ -30,6 +30,19 @@ export const navItems: NavData[] = [
         ]
     },
     {
+        name: 'Subsink',
+        children: [
+            {
+                name: 'Uso básico',
+                url: 'subsink/basic-usage'
+            },
+            {
+                name: 'Uso global',
+                url: 'subsink/global-usage'
+            }
+        ]
+    },
+    {
         name: 'Usos complejos',
         children: [
             {
@@ -41,10 +54,6 @@ export const navItems: NavData[] = [
                 url: 'complex/flow'
             }
         ]
-    },
-    {
-        name: 'Subsink',
-        url: 'subsink'
     },
 ];
 

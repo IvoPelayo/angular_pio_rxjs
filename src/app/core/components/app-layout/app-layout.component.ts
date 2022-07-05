@@ -6,6 +6,7 @@ import { PageService } from '../../services/page/page.service';
 @Component({
   selector: 'app-app-layout',
   templateUrl: './app-layout.component.html',
+  styleUrls: [ './app-layout.component.scss' ],
   providers: [ PageService ]
 })
 export class AppLayoutComponent {
@@ -19,5 +20,9 @@ export class AppLayoutComponent {
     } else {
       item.expanded = item.expanded? false : true;
     }
+  }
+
+  selected(item: NavData): boolean {
+    return item.url && ('/' + item.url) == this.router.url;
   }
 }
