@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MomentModule } from 'ngx-moment';
+import { MarkdownModule } from 'ngx-markdown'
 import 'moment/locale/es';
 
 
@@ -11,8 +12,6 @@ import 'moment/locale/es';
   ],
   imports: [
     CommonModule,
-    MomentModule,
-    MaterialModule,
   ],
   providers: [],
   exports: [
@@ -21,6 +20,7 @@ import 'moment/locale/es';
     ReactiveFormsModule,
     MaterialModule,
     MomentModule,
+    MarkdownModule,
   ]
 })
 export class SharedModule { }

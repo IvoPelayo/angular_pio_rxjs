@@ -25,6 +25,7 @@
     "@angular/router": "~9.1.6",
     "lodash": "^4.17.21",
     "moment": "2.24.0",
+    "ngx-markdown": "^14.0.1",
     "ngx-moment": "3.5.0",
     "rxjs": "~6.5.5",
     "subsink": "^1.0.2",

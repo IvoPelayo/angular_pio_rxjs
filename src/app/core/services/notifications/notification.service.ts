@@ -64,7 +64,7 @@ export class NotificationService {
 
     }
 
-  /** Default success message for httpPost calls */
+  /** Default success message for save calls */
   saveSuccess(): void {
     this.showToast(
       'Registro guardado con éxito',
@@ -72,10 +72,18 @@ export class NotificationService {
     );
   }
 
-  /** Default error message for httpPost calls */
+  /** Default error message for save calls */
   saveError(): void {
     this.showToast(
       'Hubo un problema procesando el registro',
+      NotificationType.Error
+    );
+  }
+
+  /** Default error message for http calls */
+  serverError(): void {
+    this.showToast(
+      'No pudo conectarse con el servidor',
       NotificationType.Error
     );
   }

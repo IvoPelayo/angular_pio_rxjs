@@ -8,6 +8,8 @@ import { HttpMockRequestInterceptor } from './core/interceptors/backend/http.bac
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
+import { MarkdownModule } from 'ngx-markdown'
+import { ServerErrorInterceptor } from './core/interceptors/server-error/server-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -19,8 +21,14 @@ import { CommonModule } from '@angular/common';
     BrowserAnimationsModule,
     CoreModule,
     AppRoutingModule,
+    MarkdownModule.forRoot()
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ServerErrorInterceptor,
+      multi: true
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpMockRequestInterceptor,
