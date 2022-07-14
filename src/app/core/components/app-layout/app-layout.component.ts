@@ -12,7 +12,7 @@ import { PageService } from '../../services/page/page.service';
 export class AppLayoutComponent {
   navItems: NavData[] = navItems;
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private page: PageService){}
 
   itemClicked(item: NavData) {
     if(item.url) {
@@ -24,5 +24,9 @@ export class AppLayoutComponent {
 
   selected(item: NavData): boolean {
     return item.url && ('/' + item.url) == this.router.url;
+  }
+
+  expanded(item: NavData): boolean {
+    return item.children && (item.expanded || !!item.children.find(c => this.selected(c)));
   }
 }

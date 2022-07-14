@@ -1,18 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CustomComponent } from './components/custom/custom.component';
-import { MostUsedComponent } from './components/most-used/most-used.component';
-import { StackComponent } from './components/stack/stack.component';
+import { BuiltInComponent } from './components/built-in/built-in.component';
 
 
 const routes: Routes = [
   {
-    path: 'most-used',
-    component: MostUsedComponent
-  },
-  {
-    path: 'stack',
-    component: StackComponent
+    path: 'built-in',
+    component: BuiltInComponent
   },
   {
     path: 'custom',

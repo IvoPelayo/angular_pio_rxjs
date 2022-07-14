@@ -9,15 +9,15 @@ import { map as rxjsMap } from 'rxjs/operators';
 import { map } from 'lodash';
 import { HttpMethods } from 'src/app/core/enums/http-methods';
 
-Injectable()
+@Injectable()
 export class DummyService extends SearchService<Dummy>{
     private _controller: StringEnum =  EndPoints.webApiBaseUrl.add('dummy');
     constructor(private apiService: HttpService) {
         super(apiService, EndPoints.webApiBaseUrl.add('dummy').add('search').toString());
     }
   
-    searchMapped(criteria: ISearchCriteria): Observable<SearchResult<Dummy>> {
-      return this.search(criteria).pipe(
+    search(criteria: ISearchCriteria): Observable<SearchResult<Dummy>> {
+      return super.search(criteria).pipe(
         rxjsMap(res => {
             res.data = map(res.data, d => new Dummy(d))
             return res;
@@ -37,7 +37,8 @@ export class DummyService extends SearchService<Dummy>{
     save(dummy: Dummy): Observable<Dummy> {
         return this.apiService.call<Dummy>({
             url: this._controller.toString(),
-            method: HttpMethods.POST
+            method: HttpMethods.POST,
+            body: dummy
         }).pipe(
             rxjsMap(res => new Dummy(res))
         );

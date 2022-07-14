@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { InterceptorMockResponses } from './responses';
+import { delay } from 'rxjs/operators';
 
 /**
  * Angular HttpInterceptor used to mock responses from the server.
@@ -18,7 +19,9 @@ export class HttpMockRequestInterceptor implements HttpInterceptor {
         for (const element of InterceptorMockResponses) {
             if (url === element.url && (!element.method || element.method.toString() === request.method)) {
                 console.log('Loaded from mock : ' + request.url);
-                return of(new HttpResponse({ status: 200, body: element.json, headers: element.headers }));
+                return of(new HttpResponse({ status: 200, body: element.json, headers: element.headers })).pipe(
+                    delay(1000)
+                );
             }
         }
         return next.handle(request);

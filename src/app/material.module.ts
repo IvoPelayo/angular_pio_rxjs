@@ -9,6 +9,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
     exports: [
@@ -22,6 +25,9 @@ import { MatListModule } from '@angular/material/list';
         MatSnackBarModule,
         FlexLayoutModule,
         MatSidenavModule,
+        MatCardModule,
+        MatTableModule,
+        MatSlideToggleModule
     ]
 })
 export class MaterialModule {}

@@ -6,13 +6,13 @@
         <mat-list role="list">
             <ng-container *ngFor="let item of navItems">
                 <ng-template [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{ item: item }"></ng-template>
-                <mat-list *ngIf="item.children && item.expanded">
+                <mat-list *ngIf="expanded(item)">
                     <ng-template *ngFor="let children of item.children" [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{ item: children }"></ng-template>
                 </mat-list>
             </ng-container>
         </mat-list>
     </mat-sidenav>
-    <mat-sidenav-content style="padding:15px">
+    <mat-sidenav-content class="main-content">
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

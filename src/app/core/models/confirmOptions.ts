@@ -21,8 +21,8 @@ export class ConfirmOptions extends Constructable implements IConfirmOptions {
     }
 
     private setDefaults() {
-        this.message = this.message || 'core.services.notifications.remove-item-title';
-        this.acceptButtonText = this.acceptButtonText || 'core.services.notifications.accept-button';
-        this.declineButtonText = this.declineButtonText || 'core.services.notifications.decline-button';
+        this.message = this.message || '¿Está seguro que desea eliminar este registro?';
+        this.acceptButtonText = this.acceptButtonText || 'Si';
+        this.declineButtonText = this.declineButtonText || 'No';
     }
 }

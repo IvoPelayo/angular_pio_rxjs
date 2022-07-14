@@ -15,7 +15,7 @@ export class ServerErrorInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request).pipe(
-            map((event: HttpEvent<any>) =>  event),
+            //map((event: HttpEvent<any>) =>  event),
             catchError((error: HttpErrorResponse) => {
                 this.notifications.serverError();
                 return throwError(error);

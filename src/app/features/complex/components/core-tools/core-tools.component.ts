@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DummyService } from 'src/app/shared/services/dummy/dummy.service';
 
 @Component({
   selector: 'app-core-tools',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoreToolsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dummyService: DummyService) { }
 
   ngOnInit(): void {
+  }
+
+  callWithError() {
+    this.dummyService.getById(10).subscribe(dummy => {
+      // Do something
+    });
   }
 
 }

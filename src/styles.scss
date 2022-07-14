@@ -1,2 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.red {
+    color: red!important;
+}
+
+[mat-header-cell] {
+    padding-left: 15px!important;
+    padding-right: 15px!important;
+}
+
+[mat-cell] {
+    padding-left: 15px!important;
+    padding-right: 15px!important;
+}
+
+mat-card {
+    margin-bottom: 10px!important;
+}
+
+.dark-backdrop {
+    background-color: rgba(0,0,0, 0.5);
+}

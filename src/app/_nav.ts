@@ -13,23 +13,6 @@ export const navItems: NavData[] = [
       ]
     },
     {
-        name: 'Pipes',
-        children: [
-            {
-                name: 'Más utilizados',
-                url: 'pipes/most-used'
-            },
-            {
-                name: 'Combinar',
-                url: 'pipes/stack'
-            },
-            {
-                name: 'Custom',
-                url: 'pipes/custom'
-            }
-        ]
-    },
-    {
         name: 'Subsink',
         children: [
             {
@@ -39,6 +22,19 @@ export const navItems: NavData[] = [
             {
                 name: 'Uso global',
                 url: 'subsink/global-usage'
+            }
+        ]
+    },
+    {
+        name: 'Pipes',
+        children: [
+            {
+                name: 'Incluidos',
+                url: 'pipes/built-in'
+            },
+            {
+                name: 'Custom',
+                url: 'pipes/custom'
             }
         ]
     },

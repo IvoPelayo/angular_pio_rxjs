@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpMockRequestInterceptor } from './core/interceptors/backend/http.backend.interceptor.mock';
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +19,7 @@ import { ServerErrorInterceptor } from './core/interceptors/server-error/server-
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     CoreModule,
     AppRoutingModule,
     MarkdownModule.forRoot()

@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MomentModule } from 'ngx-moment';
-import { MarkdownModule } from 'ngx-markdown'
+import { MarkdownModule } from 'ngx-markdown';
 import 'moment/locale/es';
+import { DummyService } from './services/dummy/dummy.service';
 
 
 @NgModule({
@@ -13,7 +14,9 @@ import 'moment/locale/es';
   imports: [
     CommonModule,
   ],
-  providers: [],
+  providers: [
+    DummyService,
+  ],
   exports: [
     CommonModule,
     FormsModule,

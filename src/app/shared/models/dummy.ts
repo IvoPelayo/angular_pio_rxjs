@@ -1,6 +1,5 @@
 import { map } from "lodash";
-import * as moment from "moment";
-import { Moment } from "moment";
+import * as moment from 'moment';
 import { Constructable } from "src/app/core/models/constructable";
 
 export class Dummy extends Constructable {
@@ -8,7 +7,7 @@ export class Dummy extends Constructable {
     parentId?: number;
     name: string;
     lastName: string;
-    birthDate: Moment;
+    birthDate: moment.Moment;
     children: Dummy[];
 
     get age(): number {
@@ -21,7 +20,7 @@ export class Dummy extends Constructable {
     }
 
     private customMap(data) {
-        this.birthDate = moment.utc(data?.birthDate);
+        this.birthDate = moment.utc(data?.birthDate, 'DD/MM/YYYY');
         this.children = map(data?.children || [], c => new Dummy(c));
     }
 }
