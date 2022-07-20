@@ -9,7 +9,7 @@ import { AppLayoutComponent } from './core/components/app-layout/app-layout.comp
 const routes: Route[] | Routes = [
     {
         path: '',
-        redirectTo: 'basic/subscription',
+        redirectTo: 'basic/home',
         pathMatch: 'full',
     },
     {
@@ -34,7 +34,7 @@ const routes: Route[] | Routes = [
             },
         ]
     },
-    { path: '**', redirectTo: 'basic/subscription' }
+    { path: '**', redirectTo: 'basic/home' }
 ];
 
 @NgModule({

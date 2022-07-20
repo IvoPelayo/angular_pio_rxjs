@@ -1,7 +1,7 @@
 
 <mat-sidenav-container id="container" fullscreen>
     <mat-sidenav mode="side" opened class="sidenav">
-        <h2>Contenidos</h2>
+        <h2 [routerLink]="'basic/home'">RXJS</h2>
         <mat-divider></mat-divider>
         <mat-list role="list">
             <ng-container *ngFor="let item of navItems">

@@ -8,7 +8,6 @@ import { HttpMockRequestInterceptor } from './core/interceptors/backend/http.bac
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
-import { MarkdownModule } from 'ngx-markdown'
 import { ServerErrorInterceptor } from './core/interceptors/server-error/server-error.interceptor';
 
 @NgModule({
@@ -22,7 +21,6 @@ import { ServerErrorInterceptor } from './core/interceptors/server-error/server-
     HttpClientModule,
     CoreModule,
     AppRoutingModule,
-    MarkdownModule.forRoot()
   ],
   providers: [
     {
@@ -34,7 +32,7 @@ import { ServerErrorInterceptor } from './core/interceptors/server-error/server-
       provide: HTTP_INTERCEPTORS,
       useClass: HttpMockRequestInterceptor,
       multi: true
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })

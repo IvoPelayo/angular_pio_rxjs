@@ -1,11 +1,61 @@
-<div fxFill fxLayout="row wrap" fxLayoutGap="10px">
-    <markdown fxFlex="100" preserveWhitespaces>
-      # Uso básico
+<mat-card>
+  <mat-card-header>
+    <h2 mat-card-title>Observables</h2>
+  </mat-card-header>
+  <mat-card-content>
+    <p><strong class="red">IMPORTANTE:</strong> Para que un observable sea ejecutado es necesario que al menos un
+    observer este suscripto al mismo</p>
 
-      ESTO NO SE SI ANDA
-      ## test
-    </markdown>
-    
+    <p><strong>Flujo básico:</strong>
+      Un Observer (o más) se subscribe a un Observable a través del método 'subscribe(...)'
+      Se ejecuta el Observable, y este emitira eventos 'next'(éxito), 'error' y 'complete' durante su ciclo de vida.
+      Cada Observer recibirá el resultado de cada evento simultáneamente.
+      Es posible que este emita múltiples 'next' y 'error' antes de emitir un 'complete', que finaliza la suscripción.
+    </p>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-header>
+    <h2 mat-card-title>Crear Observables</h2>
+  </mat-card-header>
+  <mat-card-content>
+    <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-between start" fxFlex>
+      <p fxFlex>
+        Estos pueden crearse utilizando directamente el constructor o incluso desde eventos o Promises con
+        las utilidades de 'from' y 'fromEvent'.
+      </p>
+      <div fxFlex>
+        <img src="assets/creation.png" style="max-height: 350px" />
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-header>
+    <h2 mat-card-title>Observables vs Promises</h2>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Los conceptos de estos son similares, ambos se ejecutan de manera asincrónica, dando como resultado un comportamiento similar:</p>
+    <ul>
+      <li>(next) == (then)</li>
+      <li>(error) == (catch)</li>
+      <li>(complete) == (finally)</li>
+    </ul>
+
+    <p><strong><u>Ventajas con respecto a las Promises</u></strong></p>
+
+    <ul>
+      <li>Multiples suscripciónes -> un mismo observable *</li>
+      <li><i>Posibilidad</i> de evitar múltiples ejecuciones de la misma implementación</li>
+      <li>El observable puede emitir múltiples resultados/eventos</li>
+      <li>Posibilidad de mantener una suscripción <strong>VIVA</strong> a lo largo del tiempo *</li>
+      <li>Utilizar operadores para manipular eventos, incluso aplicar lógica antes de la ejecución.</li>
+      <li><i>Posibilidad</i> de reutilizar funcionalidad a partir de operadores personalizados</li>
+      <li><i>Posibilidad</i> de evitar anidación then(...then(...then))</li>
+    </ul>
+  </mat-card-content>
+</mat-card>
+<div fxFill fxLayout="row wrap" fxLayoutGap="10px">
     <h2 fxFlex="100">Ejemplos</h2>
     
     <mat-card fxFlex="45" fxFlex.lt-md="100">

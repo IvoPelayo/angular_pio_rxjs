@@ -2,7 +2,7 @@ import { SearchResult } from './../../../../shared/services/search/search.servic
 import { Component } from '@angular/core';
 import { DummyService } from 'src/app/shared/services/dummy/dummy.service';
 import { Dummy } from 'src/app/shared/models/dummy';
-import { Observable } from 'rxjs';
+import { from, fromEvent, Observable } from 'rxjs';
 
 @Component({
   templateUrl: './subscription.component.html',
