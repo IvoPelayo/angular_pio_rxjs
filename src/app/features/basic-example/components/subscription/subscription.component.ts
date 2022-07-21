@@ -2,14 +2,13 @@ import { SearchResult } from './../../../../shared/services/search/search.servic
 import { Component } from '@angular/core';
 import { DummyService } from 'src/app/shared/services/dummy/dummy.service';
 import { Dummy } from 'src/app/shared/models/dummy';
-import { from, fromEvent, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   templateUrl: './subscription.component.html',
 })
 export class SubscriptionComponent {
-  columns: string[] = [ 'name', 'lastName', 'birthDate'];
-  data: SearchResult<Dummy>;
+  data: SearchResult<Dummy> = new SearchResult();;
 
   constructor(public dummyService: DummyService) { }
 

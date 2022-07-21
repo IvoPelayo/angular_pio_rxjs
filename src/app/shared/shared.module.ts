@@ -5,13 +5,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MomentModule } from 'ngx-moment';
 import 'moment/locale/es';
 import { DummyService } from './services/dummy/dummy.service';
+import { DummyTableComponent } from './components/dummy-table/dummy-table.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
   declarations: [
+    DummyTableComponent
   ],
   imports: [
     CommonModule,
+    MatTableModule,
   ],
   providers: [
     DummyService,
@@ -22,6 +26,7 @@ import { DummyService } from './services/dummy/dummy.service';
     ReactiveFormsModule,
     MaterialModule,
     MomentModule,
+    DummyTableComponent,
   ]
 })
 export class SharedModule { }

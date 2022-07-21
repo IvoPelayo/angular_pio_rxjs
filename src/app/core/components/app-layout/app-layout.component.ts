@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { forEach } from 'lodash';
 import { NavData, navItems } from 'src/app/_nav';
 import { PageService } from '../../services/page/page.service';
 
@@ -19,6 +20,7 @@ export class AppLayoutComponent {
       this.router.navigateByUrl(item.url);
     } else {
       item.expanded = item.expanded? false : true;
+      forEach(navItems, i => i.expanded = i == item);
     }
   }
 

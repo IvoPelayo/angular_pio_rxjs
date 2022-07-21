@@ -1,135 +1,74 @@
-<mat-card>
-  <mat-card-header>
-    <h2 mat-card-title>Observables</h2>
-  </mat-card-header>
-  <mat-card-content>
-    <p><strong class="red">IMPORTANTE:</strong> Para que un observable sea ejecutado es necesario que al menos un
-    observer este suscripto al mismo</p>
-
-    <p><strong>Flujo básico:</strong>
-      Un Observer (o más) se subscribe a un Observable a través del método 'subscribe(...)'
-      Se ejecuta el Observable, y este emitira eventos 'next'(éxito), 'error' y 'complete' durante su ciclo de vida.
-      Cada Observer recibirá el resultado de cada evento simultáneamente.
-      Es posible que este emita múltiples 'next' y 'error' antes de emitir un 'complete', que finaliza la suscripción.
-    </p>
-  </mat-card-content>
-</mat-card>
-<mat-card>
-  <mat-card-header>
-    <h2 mat-card-title>Crear Observables</h2>
-  </mat-card-header>
-  <mat-card-content>
-    <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-between start" fxFlex>
-      <p fxFlex>
-        Estos pueden crearse utilizando directamente el constructor o incluso desde eventos o Promises con
-        las utilidades de 'from' y 'fromEvent'.
+<div fxFlex fxLayout="column" fxLayoutGap="15px">
+  <mat-card>
+    <mat-card-header>
+      <h2 mat-card-title>Observables</h2>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong class="red">IMPORTANTE:</strong> Para que un observable sea ejecutado es necesario que al menos un
+      observer este suscripto al mismo</p>
+  
+      <p><strong>Flujo básico:</strong>
+        Un Observer (o más) se subscribe a un Observable a través del método 'subscribe(...)'
+        Se ejecuta el Observable, y este emitira eventos 'next'(éxito), 'error' y 'complete' durante su ciclo de vida.
+        Cada Observer recibirá el resultado de cada evento simultáneamente.
+        Es posible que este emita múltiples 'next' y 'error' antes de emitir un 'complete', que finaliza la suscripción.
       </p>
-      <div fxFlex>
-        <img src="assets/creation.png" style="max-height: 350px" />
-      </div>
-    </div>
-  </mat-card-content>
-</mat-card>
-<mat-card>
-  <mat-card-header>
-    <h2 mat-card-title>Observables vs Promises</h2>
-  </mat-card-header>
-  <mat-card-content>
-    <p>Los conceptos de estos son similares, ambos se ejecutan de manera asincrónica, dando como resultado un comportamiento similar:</p>
-    <ul>
-      <li>(next) == (then)</li>
-      <li>(error) == (catch)</li>
-      <li>(complete) == (finally)</li>
-    </ul>
-
-    <p><strong><u>Ventajas con respecto a las Promises</u></strong></p>
-
-    <ul>
-      <li>Multiples suscripciónes -> un mismo observable *</li>
-      <li><i>Posibilidad</i> de evitar múltiples ejecuciones de la misma implementación</li>
-      <li>El observable puede emitir múltiples resultados/eventos</li>
-      <li>Posibilidad de mantener una suscripción <strong>VIVA</strong> a lo largo del tiempo *</li>
-      <li>Utilizar operadores para manipular eventos, incluso aplicar lógica antes de la ejecución.</li>
-      <li><i>Posibilidad</i> de reutilizar funcionalidad a partir de operadores personalizados</li>
-      <li><i>Posibilidad</i> de evitar anidación then(...then(...then))</li>
-    </ul>
-  </mat-card-content>
-</mat-card>
-<div fxFill fxLayout="row wrap" fxLayoutGap="10px">
-    <h2 fxFlex="100">Ejemplos</h2>
-    
-    <mat-card fxFlex="45" fxFlex.lt-md="100">
-        <mat-card-header>
-            <p mat-card-title>Llamada directa al observable<span class="red">(incorrecto)</span></p>
-        </mat-card-header>
-        <mat-card-content fxLayout="row" fxLayoutAlign="center center">
-            <button mat-flat-button color="primary" (click)="getData()">Buscar</button>
-        </mat-card-content>
-    </mat-card>
-
-    <mat-card fxFlex="45" fxFlex.lt-md="100">
-      <mat-card-header>
-          <p mat-card-title>Llamada con suscripción</p>
-      </mat-card-header>
-      <mat-card-content fxLayout="column" fxLayoutAlign="center center">
-          <table mat-table [dataSource]="data.data" *ngIf="data" class="mat-elevation-z8">
-              <!-- Position Column -->
-              <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> Nombre</th>
-                <td mat-cell *matCellDef="let dummy"> {{ dummy.name }} </td>
-              </ng-container>
-            
-              <!-- Name Column -->
-              <ng-container matColumnDef="lastName">
-                <th mat-header-cell *matHeaderCellDef> Apellido </th>
-                <td mat-cell *matCellDef="let dummy"> {{dummy.lastName}} </td>
-              </ng-container>
-            
-              <!-- Weight Column -->
-              <ng-container matColumnDef="birthDate">
-                <th mat-header-cell *matHeaderCellDef> F. de nacimiento </th>
-                <td mat-cell *matCellDef="let dummy"> {{dummy.birthDate }} </td>
-              </ng-container>
-            
-              <tr mat-header-row *matHeaderRowDef="columns"></tr>
-              <tr mat-row *matRowDef="let row; columns: columns;"></tr>
-            </table>
-      </mat-card-content>
-      <mat-card-actions  *ngIf="!data">
-        <button mat-flat-button color="primary" (click)="getDataWithSubscription()">Buscar</button>
-      </mat-card-actions>
+    </mat-card-content>
   </mat-card>
-    <mat-card fxFlex="45" fxFlex.lt-md="100">
-        <mat-card-header>
-            <p mat-card-title>Llamada directa al observable con async pipe</p>
-        </mat-card-header>
-        <mat-card-content fxLayout="column" fxLayoutAlign="center center">
-            <mat-slide-toggle #toggle>Ver tabla</mat-slide-toggle>
 
-            <table mat-table *ngIf="toggle.checked" [dataSource]="(dummyService.search({ page: 1, pageCount: 10 })| async).data" class="mat-elevation-z8">
-                <!-- Position Column -->
-                <ng-container matColumnDef="name">
-                  <th mat-header-cell *matHeaderCellDef> Nombre</th>
-                  <td mat-cell *matCellDef="let dummy"> {{ dummy.name }} </td>
-                </ng-container>
-              
-                <!-- Name Column -->
-                <ng-container matColumnDef="lastName">
-                  <th mat-header-cell *matHeaderCellDef> Apellido </th>
-                  <td mat-cell *matCellDef="let dummy"> {{dummy.lastName}} </td>
-                </ng-container>
-              
-                <!-- Weight Column -->
-                <ng-container matColumnDef="birthDate">
-                  <th mat-header-cell *matHeaderCellDef> F. de nacimiento </th>
-                  <td mat-cell *matCellDef="let dummy"> {{dummy.birthDate }} </td>
-                </ng-container>
-              
-                <tr mat-header-row *matHeaderRowDef="columns"></tr>
-                <tr mat-row *matRowDef="let row; columns: columns;"></tr>
-              </table>
-        </mat-card-content>
-    </mat-card>
+  <mat-card>
+    <mat-card-header>
+      <h2 mat-card-title>Crear Observables</h2>
+    </mat-card-header>
+    <mat-card-content>
+      <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-between start" fxFlex>
+        <p fxFlex>
+          Estos pueden crearse utilizando directamente el constructor o incluso desde eventos o Promises con
+          las utilidades de 'from' y 'fromEvent'.
+        </p>
+        <div fxFlex>
+          <img src="assets/creation.png" style="max-height: 350px" />
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
 
+  <mat-card>
+    <mat-card-header>
+      <h2 mat-card-title>Observables vs Promises</h2>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Los conceptos de estos son similares, ambos se ejecutan de manera asincrónica, dando como resultado un comportamiento similar:</p>
+      <ul>
+        <li>(next) == (then)</li>
+        <li>(error) == (catch)</li>
+        <li>(complete) == (finally)</li>
+      </ul>
+  
+      <p><strong><u>Ventajas con respecto a las Promises</u></strong></p>
+  
+      <ul>
+        <li>Multiples suscripciónes -> un mismo observable *</li>
+        <li><i>Posibilidad</i> de evitar múltiples ejecuciones de la misma implementación</li>
+        <li>El observable puede emitir múltiples resultados/eventos</li>
+        <li>Posibilidad de mantener una suscripción <strong>VIVA</strong> a lo largo del tiempo *</li>
+        <li>Utilizar operadores para manipular eventos, incluso aplicar lógica antes de la ejecución.</li>
+        <li><i>Posibilidad</i> de reutilizar funcionalidad a partir de operadores personalizados</li>
+        <li><i>Posibilidad</i> de evitar anidación then(...then(...then))</li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header fxLayout="column">
+        <p mat-card-title>Ejemplos</p>
+        <div fxLayout="row" fxFlex fxLayoutAlign="space-between">
+          <button mat-flat-button color="primary" (click)="getData()">Llamada directa al observable<span class="red">&nbsp;(incorrecto)</span></button>
+          <button mat-flat-button color="primary" (click)="getDataWithSubscription()">Llamada con suscripción</button>
+        </div>
+    </mat-card-header>
+    <mat-card-content fxLayout="row" fxLayoutAlign="center center">
+        <app-dummy-table [source]="data.data"></app-dummy-table>
+    </mat-card-content>
+  </mat-card>
 </div>
-
