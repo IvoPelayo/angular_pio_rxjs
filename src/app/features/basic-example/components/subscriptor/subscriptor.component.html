@@ -17,7 +17,7 @@
 
     <p><strong class="red">IMPORTANTE:</strong> Se debe tener mucho cuidado en estos casos, ya que las suscripciones abiertas pueden ocasionar
     memory leaks y comportamientos no deseados, por lo tanto siempre es aconsejable finalizar las suscripciones almacenandolas en una variable,
-    y llamando al metodo unsubscribe()
+    y llamando al metodo unsubscribe(), usualmente esto se hace dentro del ciclo de ngOnDestroy() a modo de limpieza antes de destruir el componente.
     *
     </p>
   </mat-card-content>

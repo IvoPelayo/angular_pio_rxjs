@@ -1,23 +1,15 @@
-<mat-card fxFlex>
+<mat-card>
   <mat-card-header>
-    <h2 mat-card-title>Subsink: wrap</h2>
+    <h2 mat-card-title>Subsink wrapper</h2>
   </mat-card-header>
-  <mat-card-content>
-    <mat-tab-group>
-      <mat-tab label="Descripción">
-        <p>Se puede crear una clase específica para este propósito, de la cual fururos componentes puedan heredar su comportamiento.
+  <mat-card-content fxLayout="column" fxLayoutGap="15px">
+    <p>Se puede crear una clase específica para este propósito, de la cual fururos componentes puedan heredar su comportamiento.
 
-          De esta manera utilizando la clase SubscriptionComponent se puede directamente agregar las suscripciones
-          a la variable subs.sink, donde estas luego serán eliminadas por el ciclo de ngOnDestroy.
-        </p>
-      </mat-tab>
-      <mat-tab label="Wrapper">
-      </mat-tab>
-      <mat-tab label="Implementación">
-        <pre><code>
-          code here, escape it yourself.
-        </code></pre>
-      </mat-tab>
-    </mat-tab-group>
+      De esta manera utilizando la clase SubscriptionComponent se puede directamente agregar las suscripciones
+      a la variable subs.sink, donde estas luego serán eliminadas por el ciclo de ngOnDestroy.
+    </p>
+
+    <img src="assets/subscription-component.png" />
+    <img src="assets/subscription-component-usage.png" />
   </mat-card-content>
 </mat-card>

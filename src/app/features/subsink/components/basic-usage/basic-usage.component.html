@@ -1,5 +1,28 @@
-<div fxFill fxLayout="row wrap" fxLayoutGap="10px">
-    <markdown fxFlex="100" preserveWhitespaces>
-      # Subsink
-    </markdown>
-</div>
+<mat-card>
+  <mat-card-header>
+    <h2 mat-card-title>Problema</h2>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Ahora bien, esto suena bastante engorroso...
+
+      Si bien nuestros componentes deberían ser lo más atomizados y simples, es posible que en un componente tengamos múltiples suscripciones,
+      lo cual me llevaría a declarar una variable por cada suscripción, para luego dentro del ciclo de ngOnDestroy *verificar* que esta variable contiene una
+      suscripción, y finalizarla.
+    </p>
+
+    <img src="assets/subscription-variables.png" />
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <h2 mat-card-title>Solución: <strong>Subsink</strong></h2>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      Con esta pequeña librería obtenemos una clase que maneja suscripciones de manera sencilla, permitiendo finalizarlas en solo una linea de código.
+    </p>
+
+    <img src="assets/subsink.png" />
+  </mat-card-content>
+</mat-card>
