@@ -16,14 +16,14 @@ export class DummyService extends SearchService<Dummy>{
         super(apiService, EndPoints.webApiBaseUrl.add('dummy').add('search').toString());
     }
   
-    search(criteria: ISearchCriteria): Observable<SearchResult<Dummy>> {
+    /*search(criteria: ISearchCriteria): Observable<SearchResult<Dummy>> {
       return super.search(criteria).pipe(
         rxjsMap(res => {
             res.data = map(res.data, d => new Dummy(d))
             return res;
         })
       );
-    }
+    }*/
 
     getById(dummyId: number): Observable<Dummy> {
         return this.apiService.call<Dummy>({

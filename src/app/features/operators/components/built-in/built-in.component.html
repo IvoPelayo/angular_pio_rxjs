@@ -1,0 +1,66 @@
+<mat-card>
+  <mat-card-header>
+    <h3 mat-card-title>Operators</h3>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      Ahora que ya tenemos una idea básica de como trabajar con Observables, podemos dar paso a una de las principales
+      ventajas: los operadores.
+      
+      Estas funciones permiten expandir comportamiento, combinar, transformar observables dando
+      la posiblidad de realizar operaciones complejas, capturar errores durante el proceso, reutilizar implementaciones y
+      mucho más.
+    </p>
+    <p>Dentro de la documentación de la librería encontramos una herramienta muy útil para saber cuál operador es el que
+      más se adecua a nuestro requerimiento: <a href="https://rxjs.dev/operator-decision-tree" target="_blank">Arbol de decisión de operadores</a>
+    </p>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <h3 mat-card-title>Ejemplos</h3>
+    <p>(Operadoras más comunmente usados)</p>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-tab-group (selectedTabChange)="data = undefined">
+      <mat-tab label="Map">
+        <div fxLayout="row" fxLayoutGap="15px">
+          <app-dummy-table [source]="data"></app-dummy-table>
+          <button mat-flat-button color="primary" (click)="getData()">Buscar</button>
+        </div>
+      </mat-tab>
+      <mat-tab label="ConcatMap">
+        <div fxLayout="row" fxLayoutGap="15px">
+          <app-dummy-table [source]="data"></app-dummy-table>
+          <button mat-flat-button color="primary" (click)="askBeforeGet()">Buscar</button>
+        </div>
+      </mat-tab>
+      <mat-tab label="ForkJoin">
+        <div fxLayout="row" fxLayoutGap="15px">
+          <app-dummy-table [source]="data"></app-dummy-table>
+          <button mat-flat-button color="primary" (click)="getTwoPages()">Buscar dos páginas</button>
+        </div>
+      </mat-tab>
+      <mat-tab label="DebounceTime">
+        <div fxLayout="row" fxLayoutGap="15px">
+          <app-dummy-table [source]="data"></app-dummy-table>
+          <input matInput type="text" [ngModel]="text" (ngModelChange)="searchText($event)" />
+        </div>
+      </mat-tab>
+      <mat-tab label="Filter">
+        <div fxLayout="row" fxLayoutGap="15px">
+          <app-dummy-table [source]="data"></app-dummy-table>
+          <button mat-flat-button color="primary" (click)="filterEmptyPages()">Buscar</button>
+        </div>
+      </mat-tab>
+      <mat-tab label="Retry">
+        <div fxLayout="row" fxLayoutGap="15px">
+          <app-dummy-table [source]="data"></app-dummy-table>
+          <button mat-flat-button color="primary" (click)="askMultipleTimes()">Buscar</button>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>
+

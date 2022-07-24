@@ -21,8 +21,8 @@ const routes: Route[] | Routes = [
               loadChildren: () => import('./features/basic-example/basic-example.module').then(m => m.BasicExampleModule)
             },
             {
-              path: 'pipes',
-              loadChildren: () => import('./features/pipes/pipes.module').then(m => m.PipesModule)
+              path: 'operators',
+              loadChildren: () => import('./features/operators/operators.module').then(m => m.OperatorsModule)
             },
             {
               path: 'subsink',

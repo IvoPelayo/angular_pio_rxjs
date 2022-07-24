@@ -26,15 +26,15 @@ export const navItems: NavData[] = [
         ]
     },
     {
-        name: 'Pipes',
+        name: 'Operators',
         children: [
             {
                 name: 'Incluidos',
-                url: 'pipes/built-in'
+                url: 'operators/built-in'
             },
             {
                 name: 'Custom',
-                url: 'pipes/custom'
+                url: 'operators/custom'
             }
         ]
     },

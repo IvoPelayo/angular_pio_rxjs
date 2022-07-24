@@ -1,7 +1,7 @@
 import { SearchResult } from '../../../../shared/services/search/search.service';
 import { Component } from '@angular/core';
-import { forkJoin, throwError } from 'rxjs';
-import { catchError, concatMap, debounceTime, finalize, map, retry, filter } from 'rxjs/operators';
+import { forkJoin, Observable, pipe, throwError, UnaryFunction } from 'rxjs';
+import { catchError, concatMap, debounceTime, finalize, map, retry, filter, delay } from 'rxjs/operators';
 import { SubscriptionComponent } from 'src/app/core/models/subscription.component';
 import { NotificationService } from 'src/app/core/services/notifications/notification.service';
 import { Dummy } from 'src/app/shared/models/dummy';
@@ -30,21 +30,21 @@ export class BuiltInComponent extends SubscriptionComponent {
   getData() {
     this.subs.sink = this.dummyService.search({ page: 1, pageSize: 10 })
     .pipe(
-      map(res => res.data)
+      map(res => res.data),
     ) 
     .subscribe(res => this.data = res);
   }
 
   // ConcatMap
   askBeforeGet() {
-    this.subs.sink = this.notifications.presentConfirm(new ConfirmOptions({ message: '¿Desea cargar la información?' }))
+    this.subs.sink = this.notifications.presentConfirm({ message: '¿Desea cargar la información?' })
     .pipe(
       catchError((error) => {
           this.notifications.showToast("Rechazado", NotificationType.Error);
           return throwError(error);
       }),
       concatMap(() => this.dummyService.search({ page: 1, pageSize: 10 })),
-      map(res => res.data),
+      this.searchResultToArray(),
       finalize(() => {
         this.notifications.showToast("Terminado", NotificationType.Info);
       })
@@ -60,8 +60,9 @@ export class BuiltInComponent extends SubscriptionComponent {
     ])
     .pipe(
       map(res => {
-        return new SearchResult<Dummy>(concat(res[0].data, res[1].data), res[0].paging).data;
-      })
+        return new SearchResult<Dummy>(concat(res[0].data, res[1].data), res[0].paging);
+      }),
+      this.searchResultToArray(),
     ) 
     .subscribe(res => this.data = res);
   }
@@ -71,7 +72,7 @@ export class BuiltInComponent extends SubscriptionComponent {
     this.subs.sink = this.dummyService.search({ page: 1, pageSize: 10, partialDescription: text })
     .pipe(
         debounceTime(15000),
-        map(res => res.data),
+        map(res => res.data.filter(i => this.match(i.name, text) || this.match(i.lastName, text))),
     ) 
     .subscribe(res => this.data = res);
   }
@@ -81,7 +82,7 @@ export class BuiltInComponent extends SubscriptionComponent {
     this.subs.sink = this.dummyService.search({ page: 1, pageSize: 10 })
     .pipe(
       filter(res => res.data.length > 0),
-      map(res => res.data),
+      this.searchResultToArray(),
     ) 
     .subscribe(res => this.data = res);
   }
@@ -89,7 +90,7 @@ export class BuiltInComponent extends SubscriptionComponent {
   // retry
   // retryWhen
    askMultipleTimes() {
-    this.subs.sink = this.notifications.presentConfirm()
+    this.subs.sink = this.notifications.presentConfirm({ message: '¿Desea cargar la información?' })
     .pipe(
       retry(2),
       catchError((error) => {
@@ -97,8 +98,18 @@ export class BuiltInComponent extends SubscriptionComponent {
           return throwError(error);
       }),
       concatMap(() => this.dummyService.search({ page: 1, pageSize: 10 })),
-      map(res => res.data),
+      this.searchResultToArray(),
     ) 
     .subscribe(res => this.data = res);
+  }
+
+  private match(haystack: string, needle: string) {
+    return haystack.toLowerCase().includes(needle.toLowerCase());
+  }
+
+  searchResultToArray<T>(): UnaryFunction<Observable<SearchResult<T>>, Observable<T[]>> {
+    return pipe(
+      map(res => res.data),
+    );
   }
 }
