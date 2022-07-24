@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 import { SubscriptionComponent } from 'src/app/core/models/subscription.component';
 import { showLoader } from 'src/app/core/pipes/loader.pipe';
 import { saveMessages } from 'src/app/core/pipes/messages.pipe';

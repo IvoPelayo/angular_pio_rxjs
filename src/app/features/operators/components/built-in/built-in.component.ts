@@ -8,14 +8,12 @@ import { Dummy } from 'src/app/shared/models/dummy';
 import { DummyService } from 'src/app/shared/services/dummy/dummy.service';
 import { concat } from 'lodash';
 import { NotificationType } from 'src/app/core/enums/notificationType';
-import { ConfirmOptions } from 'src/app/core/models/confirmOptions';
 
 @Component({
   templateUrl: './built-in.component.html',
 })
 export class BuiltInComponent extends SubscriptionComponent {
 
-  columns: string[] = [ 'name', 'lastName', 'birthDate', 'age'];
   data: Dummy[];
   text: string;
 
