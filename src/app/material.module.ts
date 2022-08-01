@@ -13,6 +13,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
     exports: [
@@ -29,7 +32,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
         MatCardModule,
         MatTableModule,
         MatSlideToggleModule,
-        MatTabsModule
+        MatTabsModule,
+        MatDatepickerModule,
+        MatMomentDateModule,
+        MatIconModule,
     ]
 })
 export class MaterialModule {}

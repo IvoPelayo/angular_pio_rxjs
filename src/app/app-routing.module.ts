@@ -29,8 +29,8 @@ const routes: Route[] | Routes = [
               loadChildren: () => import('./features/subsink/subsink.module').then(m => m.SubsinkModule)
             },
             {
-              path: 'complex',
-              loadChildren: () => import('./features/complex/complex.module').then(m => m.ComplexModule)
+              path: 'compare',
+              loadChildren: () => import('./features/compare/compare.module').then(m => m.CompareModule)
             },
         ]
     },

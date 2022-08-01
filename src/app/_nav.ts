@@ -39,17 +39,8 @@ export const navItems: NavData[] = [
         ]
     },
     {
-        name: 'Usos complejos',
-        children: [
-            {
-                name: 'Herramientas reutilizables',
-                url: 'complex/core-tools'
-            },
-            {
-                name: 'Flujos',
-                url: 'complex/flow'
-            }
-        ]
+        name: 'Ejercicio',
+        url: 'compare/list',
     },
 ];
 

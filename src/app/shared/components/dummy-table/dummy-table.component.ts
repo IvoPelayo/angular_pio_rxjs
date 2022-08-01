@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Dummy } from '../../models/dummy';
 
 @Component({
@@ -10,5 +10,8 @@ export class DummyTableComponent {
   columns: string[] = [ 'name', 'lastName', 'birthDate'];
 
   @Input() source: Dummy[];
+  @Input() editable: boolean;
+
+  @Output() rowClick: EventEmitter<any> = new EventEmitter<Dummy>();
 
 }
