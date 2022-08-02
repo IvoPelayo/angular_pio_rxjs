@@ -14,8 +14,21 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+
+const ES_DATE_FORMATS = {
+    parse: {
+      dateInput: 'DD/MM/YYYY',
+    },
+    display: {
+      dateInput: 'DD/MM/YYYY',
+      monthYearLabel: 'MMM YYYY',
+      dateA11yLabel: 'LL',
+      monthYearA11yLabel: 'MMM YYYY',
+    },
+  };
 
 @NgModule({
     exports: [
@@ -36,6 +49,19 @@ import { MatIconModule } from '@angular/material/icon';
         MatDatepickerModule,
         MatMomentDateModule,
         MatIconModule,
+    ],
+    providers: [
+        {provide: MAT_DATE_FORMATS, useValue: ES_DATE_FORMATS},
+        { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
+        {
+            provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+            useValue: { useUtc: true }
+        },
+        {
+            provide: DateAdapter,
+            useClass: MomentDateAdapter,
+            deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_DATE_FORMATS]
+        },
     ]
 })
 export class MaterialModule {}

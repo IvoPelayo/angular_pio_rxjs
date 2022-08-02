@@ -23,13 +23,18 @@ export class EditDummyComponent implements OnInit {
       lastName: new FormControl('', [ Validators.required ]),
       birthDate: new FormControl(null, [ Validators.required ]),
       parentId: new FormControl(0),
-      children: new FormControl(0),
+      children: new FormControl([]),
+      childrenIds: new FormControl([])
     });
+
+    if(this.dummy) {
+      this.form.patchValue(this.dummy);
+    }
   }
 
   save() {
       this.dummyChange.emit(
-        new Dummy(this.form.getRawValue())
+        new Dummy({ ...this.form.getRawValue(), ...this.dummy.children, childrenIds: this.dummy.childrenIds})
       );
   }
 

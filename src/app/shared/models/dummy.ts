@@ -9,6 +9,7 @@ export class Dummy extends Constructable {
     lastName: string;
     birthDate: moment.Moment;
     children: Dummy[];
+    childrenIds: number[];
 
     get age(): number {
         return moment.utc().diff(this.birthDate, 'years');

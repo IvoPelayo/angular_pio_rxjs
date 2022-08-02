@@ -26,21 +26,8 @@ const dummies = [
         name: 'Dummy',
         lastName: 'Cuatro',
         birthDate: '10/05/1989',
-        children: [
-            {
-                id: 6,
-                parentId: 4,
-                name: 'Hijo',
-                lastName: 'Cuatro',
-                birthDate: '10/01/2000'
-            },
-            {
-                id: 7,
-                parentId: 4,
-                name: 'Hija',
-                lastName: 'Cuatro',
-                birthDate: '10/02/2001'
-            }
+        childrenIds: [
+            6, 7
         ]
     },
     {
@@ -48,7 +35,21 @@ const dummies = [
         name: 'Dummy',
         lastName: 'Cinco',
         birthDate: '14/07/2010'
-    }
+    },
+    {
+        id: 6,
+        parentId: 4,
+        name: 'Hijo',
+        lastName: 'Cuatro',
+        birthDate: '10/01/2000'
+    },
+    {
+        id: 7,
+        parentId: 4,
+        name: 'Hija',
+        lastName: 'Cuatro',
+        birthDate: '10/02/2001'
+    },
 ];
 
 export const sharedMockResponses: MockResponse[] = [
@@ -82,6 +83,14 @@ export const sharedMockResponses: MockResponse[] = [
     {
         url: EndPoints.webApiBaseUrl.add('dummy').add('5').toString(),
         json: dummies[4]
+    },
+    {
+        url: EndPoints.webApiBaseUrl.add('dummy').add('6').toString(),
+        json: dummies[5]
+    },
+    {
+        url: EndPoints.webApiBaseUrl.add('dummy').add('7').toString(),
+        json: dummies[6]
     },
     {
         url: EndPoints.webApiBaseUrl.add('dummy').toString(),

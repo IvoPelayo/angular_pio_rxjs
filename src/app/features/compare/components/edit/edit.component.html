@@ -1,5 +1,5 @@
 <form [formGroup]="form">
-    <div fxLayout="row">
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="15px">
         <mat-form-field appearance="outline" fxFlex>
             <mat-label>Nombre</mat-label>
             <input matInput formControlName="name" [readonly]="!isEdit" />
@@ -10,16 +10,16 @@
         </mat-form-field>
         <mat-form-field appearance="outline" fxFlex>
             <mat-label>Fecha de nacimiento</mat-label>
-            <input matInput [matDatepicker]="datepicker" [max]="today" [readonly]="!isEdit">
+            <input matInput [matDatepicker]="datepicker" formControlName="birthDate" [max]="today" [readonly]="!isEdit">
             <mat-hint>DD/MM/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="datepicker" [disabled]="!isEdit"></mat-datepicker-toggle>
             <mat-datepicker #datepicker></mat-datepicker>
           </mat-form-field>
-        <button mat-icon-button [disabled]="!form.valid" *ngIf="isEdit" (click)="save()">
-            <mat-icon>check</mat-icon>
+        <button mat-flat-button color="secondary" [disabled]="!form.valid" *ngIf="isEdit" (click)="save()">
+            Guardar
         </button>
-        <button mat-icon-button [disabled]="!form.valid" *ngIf="!isEdit" (click)="isEdit = true">
-            <mat-icon>pencil</mat-icon>
+        <button mat-flat-button color="secondary" *ngIf="!isEdit" (click)="isEdit = true">
+            Editar
         </button>
     </div>
 </form>
