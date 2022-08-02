@@ -85,22 +85,6 @@ export class BuiltInComponent extends SubscriptionComponent {
     .subscribe(res => this.data = res);
   }
 
-  // retry
-  // retryWhen
-   askMultipleTimes() {
-    this.subs.sink = this.notifications.presentConfirm({ message: '¿Desea cargar la información?' })
-    .pipe(
-      retry(2),
-      catchError((error) => {
-          this.notifications.showToast("Rechazado con ganas", NotificationType.Error);
-          return throwError(error);
-      }),
-      concatMap(() => this.dummyService.search({ page: 1, pageSize: 10 })),
-      this.searchResultToArray(),
-    ) 
-    .subscribe(res => this.data = res);
-  }
-
   private match(haystack: string, needle: string) {
     return haystack.toLowerCase().includes(needle.toLowerCase());
   }

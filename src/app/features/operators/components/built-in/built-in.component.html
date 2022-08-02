@@ -54,12 +54,6 @@
           <button mat-flat-button color="primary" (click)="filterEmptyPages()">Buscar</button>
         </div>
       </mat-tab>
-      <mat-tab label="Retry">
-        <div fxLayout="row" fxLayoutGap="15px">
-          <app-dummy-table [source]="data"></app-dummy-table>
-          <button mat-flat-button color="primary" (click)="askMultipleTimes()">Buscar</button>
-        </div>
-      </mat-tab>
     </mat-tab-group>
   </mat-card-content>
 </mat-card>

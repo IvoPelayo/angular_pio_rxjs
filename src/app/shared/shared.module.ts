@@ -7,6 +7,7 @@ import 'moment/locale/es';
 import { DummyService } from './services/dummy/dummy.service';
 import { DummyTableComponent } from './components/dummy-table/dummy-table.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { MatTableModule } from '@angular/material/table';
   imports: [
     CommonModule,
     MatTableModule,
+    MatMomentDateModule,
   ],
   providers: [
     DummyService,

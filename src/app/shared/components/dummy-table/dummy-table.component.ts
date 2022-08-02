@@ -7,7 +7,7 @@ import { Dummy } from '../../models/dummy';
   styleUrls: ['./dummy-table.component.scss']
 })
 export class DummyTableComponent {
-  columns: string[] = [ 'name', 'lastName', 'birthDate'];
+  columns: string[] = [ 'name', 'lastName', 'birthDate', 'age'];
 
   @Input() source: Dummy[];
   @Input() editable: boolean;
