@@ -35,6 +35,26 @@
 
   <mat-card>
     <mat-card-header>
+      <h2 mat-card-title>Testing</h2>
+    </mat-card-header>
+    <mat-card-content>
+      <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-between start" fxFlex>
+        <p fxFlex>
+          Realizar unit test sobre observables requiere un ajuste extra. Al tratarse de operaciones asincrónicas, 
+          es necesario indicar al test que el 'ASSERT' se encuentra dentro de la suscripción, de otra manera el test podría
+          finalizar antes de obtener una respuesta.
+
+          Esto se logra utilizando el callback 'done()' que provee los test de jasmine.
+        </p>
+        <div fxFlex>
+          <img src="assets/testing.png" style="max-height: 350px" />
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
       <h2 mat-card-title>Observables vs Promises</h2>
     </mat-card-header>
     <mat-card-content>

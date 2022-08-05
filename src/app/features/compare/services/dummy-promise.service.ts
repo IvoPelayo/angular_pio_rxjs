@@ -60,6 +60,7 @@ export class PromiseDummyManagerService {
             .then(result => {
                 this.dummy.id = result.id;
                 if(this.dummy.children?.length > 0) {
+                    forEach(this.dummy.children, c => c.parentId = this.dummy.id);
                     Promise.all(
                         map(result.children, c => this.service.save(c)
                             .toPromise()))
@@ -89,7 +90,7 @@ export class PromiseDummyManagerService {
     addChildren() {
         this.dummy.children.push(new Dummy({
             parentId: this.dummy.id,
-        }))
+        }));
     }
 
     
