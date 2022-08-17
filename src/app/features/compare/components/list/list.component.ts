@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Dummy } from 'src/app/shared/models/dummy';
 import { DummyService } from 'src/app/shared/services/dummy/dummy.service';
+import { PromiseDummyManagerService } from '../../services/dummy-promise.service';
 import { RxjsDummyManagerService } from '../../services/dummy-rxjs.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class DummyListComponent implements OnInit {
   data: Dummy[] = [];
 
   constructor(private service: DummyService,
-              public manager: RxjsDummyManagerService) { }
+              public manager: PromiseDummyManagerService,
+              public managerRxjs: RxjsDummyManagerService) { }
 
   ngOnInit(): void {
     this.service.search({ page: 1 })
@@ -20,13 +22,13 @@ export class DummyListComponent implements OnInit {
   }
 
   edit(dummy: Dummy) {
-    this.manager.getById(dummy.id).subscribe(() => {
-      // This is intentional
-    });
+    this.managerRxjs.getById(dummy.id).subscribe(
+        // This is intentional
+    );
   }
 
   save() {
-    this.manager.save().subscribe(() => {
+    this.managerRxjs.save().subscribe(() => {
       // This is intentional
     });
   }

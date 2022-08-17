@@ -29,26 +29,23 @@ export class PromiseDummyManagerService {
                             .toPromise())
                         )
                         .then(children => {
-                            this.loader.hide();
                             this.dummy.children = map(children, c => new Dummy(c));
                             resolve(this.dummy);
                         })
                         .catch(() => {
-                            this.loader.hide();
                             this.notifications.serverError();
                             resolve(this.dummy);
                         });
 
                 } else {
-                    this.loader.hide();
                     resolve(this.dummy);
                 }
             })
             .catch(() => {
-                this.loader.hide();
                 this.notifications.serverError();
                 reject();
-            });
+            })
+            .finally(() => this.loader.hide());
         });
     }
 
@@ -67,23 +64,21 @@ export class PromiseDummyManagerService {
                         .then(children => {
                             forEach(this.dummy.children, (c, index) => c.id = children[index]?.id);
                             this.dummy.childrenIds = map(this.dummy.children, c => c.id);
-                            this.loader.hide();
                             this.notifications.saveSuccess();
                             resolve(this.dummy);
                         })
                         .catch(() => {
-                            this.loader.hide();
                             this.notifications.saveError();
                             reject();
                         });
 
                 } else {
-                    this.loader.hide();
                     this.notifications.saveSuccess();
                     resolve(this.dummy);
                 }
             })
-            .catch(() => reject(this.notifications.saveError()));
+            .catch(() => reject(this.notifications.saveError()))
+            .finally(() => this.loader.hide());
         });
     }
 

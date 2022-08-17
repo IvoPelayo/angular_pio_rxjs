@@ -2,7 +2,7 @@
     <app-dummy-table [source]="data" (rowClick)="edit($event)" [editable]="true"></app-dummy-table>
 </mat-card>
 
-<mat-card *ngIf="manager.dummy">
+<mat-card *ngIf="managerRxjs.dummy">
     <mat-card-header>
         <div padding fxLayout="row" fxFlex fxLayoutAlign="end center">
             <button mat-flat-button color="primary" (click)="save()" >
@@ -11,16 +11,16 @@
         </div>
     </mat-card-header>
     <mat-card-content>
-        <app-dummy-edit [(dummy)]="manager.dummy"></app-dummy-edit>
+        <app-dummy-edit [(dummy)]="managerRxjs.dummy"></app-dummy-edit>
         <mat-divider></mat-divider>
         <div fxLayout="column" fxLayoutGap="15px" class="children">
             <div fxLayout="row"  fxLayoutAlign="space-between center">
                 <mat-label>Hijos</mat-label>
-                <button mat-flat-button color="primary" (click)="manager.addChildren()">
+                <button mat-flat-button color="primary" (click)="managerRxjs.addChildren()">
                     Nuevo
                 </button>
             </div>
-            <app-dummy-edit padding *ngFor="let child of manager.dummy.children; let i = index" [(dummy)]="manager.dummy.children[i]"></app-dummy-edit>
+            <app-dummy-edit padding *ngFor="let child of managerRxjs.dummy.children; let i = index" [(dummy)]="managerRxjs.dummy.children[i]"></app-dummy-edit>
         </div>
     </mat-card-content>
 </mat-card>
